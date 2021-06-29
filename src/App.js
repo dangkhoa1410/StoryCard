@@ -41,12 +41,13 @@ function App() {
   return (
     <div className="container App">
       <h1 style={titleStyle}>Title</h1>
+      <div className='row flex'>
       {
         data.map((item) => {
           return <Card data={item} clickHandler={clickHandler}></Card>
         })
       }
-      
+      </div>
     </div>
   );
 }

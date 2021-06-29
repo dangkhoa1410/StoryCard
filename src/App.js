@@ -26,17 +26,31 @@ function App() {
     color: 'gray'
     },
   ]
+  const [color,setColor] = useState('black')
 
   const clickHandler = e => {
     e.preventDefault();
     setColor(e.target.id)
   }
 
-  const [color,setColor] = useState('black')
+  const EnterHandler = e => {
+    if(e.target.className === 'p-2 col-md-5 col-sm-12 m-1 mb-5'){
+      e.target.style.border = `1px solid ${e.target.id}`
+      e.target.style.boxShadow = `3px 3px ${e.target.id}`
+    }
+    
+  }
+  const LeaveHandler = e => {
+    if(e.target.className === 'p-2 col-md-5 col-sm-12 m-1 mb-5'){
+      e.target.style.border = `none`
+      e.target.style.boxShadow = `none`
+    }
+  }
 
   const titleStyle = {
     color: color
   }
+
 
   return (
     <div className="container App">
@@ -44,7 +58,12 @@ function App() {
       <div className='row flex'>
       {
         data.map((item) => {
-          return <Card data={item} clickHandler={clickHandler}></Card>
+          return <div id ={item.color} 
+                      onMouseEnter={EnterHandler} 
+                      onMouseLeave={LeaveHandler}  
+                      className="p-2 col-md-5 col-sm-12 m-1 mb-5">
+                  <Card data={item} clickHandler={clickHandler}></Card>
+                </div>
         })
       }
       </div>

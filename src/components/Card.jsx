@@ -8,7 +8,7 @@ const Card = props => {
     }
     
     return (
-                <div className="card text-start p-2 col-md-5 col-sm-12 m-1 mb-5">
+                <div className="card text-start">
                     <div className="card-body">
                         <h5 className="card-title">{data.title}</h5>
                         <p className="card-text">{data.content}</p>

@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import Card from './components/Card';
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 
 function App() {
   const data = [
@@ -31,7 +31,14 @@ function App() {
   const clickHandler = e => {
     e.preventDefault();
     setColor(e.target.id)
+    setUpdate(!isUpdate)
   }
+
+  const [isUpdate, setUpdate] = useState(false)
+
+  useEffect(()=>{
+
+  },[])
 
   const EnterHandler = e => {
     if(e.target.className === 'p-2 col-md-5 col-sm-12 m-1 mb-5'){

@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import Card from './components/Card';
 import {useEffect, useState} from 'react'
@@ -35,13 +34,15 @@ function App() {
 
 
   const EnterHandler = e => {
+    console.log('Mouse Enter ', e.target.className)
     if(e.target.className === 'p-2 col-md-5 col-sm-12 m-1 mb-5'){
       e.target.style.border = `1px solid ${e.target.id}`
       e.target.style.boxShadow = `3px 3px ${e.target.id}`
     }
     
   }
-  const LeaveHandler = e => {
+  const LeaveHandler = e => {    
+    console.log('Mouse Leave ', e.target.className)
     if(e.target.className === 'p-2 col-md-5 col-sm-12 m-1 mb-5'){
       e.target.style.border = `none`
       e.target.style.boxShadow = `none`
@@ -58,8 +59,8 @@ function App() {
       <h1 style={titleStyle}>Title</h1>
       <div className='row flex'>
       {
-        data.map((item) => {
-          return <div id ={item.color} 
+        data.map((item, idx) => {
+          return <div key= {idx} id ={item.color} 
                       onMouseEnter={EnterHandler} 
                       onMouseLeave={LeaveHandler}  
                       className="p-2 col-md-5 col-sm-12 m-1 mb-5">
